@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>YouTube Tag Creator</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+        <form>
+            <label for="anime">Anime:</label><br>
+            <input type="text" id="anime" name="anime"><br><br>
+            <label for="episode">Episode #:</label><br>
+            <input type="number" id="episode" name="episode"><br><br>
+            <label for="season">Season #:</label><br>
+            <input type="number" id="season" name="season"><br><br>
+            <label for="watchalong"><a href="https://www.youtube.com/c/SamsonLoftin/playlists">Watchalong Playlist:</a></label><br>
+            <input type="text" id="watchalong" name="watchalong"><br><br>
+            <label for="reaction"><a href="https://www.youtube.com/c/SamsonLoftin/playlists">Reaction Playlist:</a></label><br>
+            <input type="text" id="reaction" name="reaction"><br><br>
+            <input class="submit" type="button" onclick="youtubeTag()" value="Submit">
+        </form><br><br>
+
+        <div id="display"></div>
+    </div>
+    </div>
+    <script>
+
+        const reactionTags = (anime, episode) => {
+            return (
+                anime + " reaction, " +
+                anime + " ep " + episode + ", " +
+                anime + " ep " + episode + " reaction, " +
+                anime + " episode " + episode + ", " +
+                anime + " reaction " + episode + ", " +
+                "reaction " + anime + ", " +
+                "reaction " + anime + " ep " + episode + ", " +
+                "reaction " + anime + " episode " + episode + ", " +
+                "reaction " + anime + " " + episode + ", " +
+                anime + " " + episode + ", "
+            )
+        }
+
+        const seasonTags = (anime, season) => {
+            return (
+                anime + " " + season + ", " +
+                anime + " season " + season + ", " +
+                anime + " s " + season + ", " +
+                anime + " s" + season + ", "
+            )
+        }
+
+        const mashupTags = (anime, season) => {
+            return (
+                anime + " reaction mashup" + ", " +
+                anime + " reaction mashup" + " season " + season + ", " +
+                anime + " reaction mashup" + " s " + season + ", "
+            )
+        }
+
+        const description = (anime, episode, season, reaction, watchalong) => {
+            const captial = anime.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+            const noSpace = anime.replace(/\s/g, '');
+
+            return (
+                captial + " Reaction Episode " + episode + " Season " + season +
+                "<br>" + "<br>" + captial + " Reaction Mashup Playlist ♥ " + reaction +
+                "<br>" + "<br>" + captial + " Watchalong FULL EPISODE Playlist ♥ " + watchalong +
+                "<br>" + "<br>" + "#" + noSpace + "reaction " + "#" + noSpace + "ep" + episode + " " +
+                "#MoreSamsonReactions"
+            )
+        }
+
+        youtubeTag = () => {
+            const anime = document.getElementById("anime").value.toLowerCase();
+            const reaction = document.getElementById("reaction").value.toLowerCase();
+            const watchalong = document.getElementById("watchalong").value.toLowerCase();
+            const episode = document.getElementById("episode").value;
+            const season = document.getElementById("season").value;
+            const display = document.getElementById("display");
+
+            return display.innerHTML = (
+                reactionTags(anime, episode) + seasonTags(anime, season) +
+                "<br>" + "<br>" + mashupTags(anime, season) +
+                "<br>" + "<br>" + description(anime, episode, season, reaction, watchalong)
+            )
+
+        }
+
+    </script>
+</body>
+
+</html>
