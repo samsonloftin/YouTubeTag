@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Anime Reactions YouTube Metadata Creator</title>
+    <title>Gaming YouTube Metadata Creator</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./index.css">
@@ -13,37 +13,24 @@
 <body>
     <div class="container">
         <div class="wrapper">
-            <div id="header">Anime Reactions <br> YouTube Metadata</div>
+            <div id="header">Gaming <br> YouTube Metadata</div>
             <div class="navigation"><a href="./index.html">Anime</a><a href="./games.html">Games</a></div>
             <form id="formContainer">
 
                 <div class="formSection" id="animeInput">
-                    <label for="anime">Anime</label>
+                    <label for="anime">Game</label>
                     <input type="text" id="anime" name="anime">
                 </div>
 
                 <div class="twoColumn">
                     <div class="formSection">
-                        <label for="episode">Episode #</label>
-                        <input type="number" id="episode" name="episode" min="0">
+                        <label for="episode">Part #</label>
+                        <input type="number" id="episode" name="episode" min="1">
                     </div>
-
                     <div class="formSection">
-                        <label for="season">Season #</label>
-                        <input type="number" id="season" name="season" min="0">
-                    </div>
-                </div>
-
-                <div class="twoColumn">
-                    <div class="formSection">
-                        <label for="reaction"><a href="https://ANIMEREACTIONS.saml.me">Reaction Playlist
-                                </a></label>
+                        <label for="reaction"><a href="https://ANIMEREACTIONS.saml.me">Playthrough Playlist
+                            </a></label>
                         <input type="text" id="reaction" name="reaction">
-                    </div>
-
-                    <div class="formSection">
-                        <label for="watchalong">Watchalong Playlist</label>
-                        <input type="text" id="watchalong" name="watchalong">
                     </div>
                 </div>
 
@@ -64,7 +51,7 @@
 
         </div>
     </div>
-    <script src="anime.js" async defer>
+    <script src="game.js" async defer>
     </script>
 </body>
 
