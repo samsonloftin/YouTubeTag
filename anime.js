@@ -24,18 +24,13 @@ const seasonTags = (anime, season) => {
     )
 }
 
-const description = (anime, episode, season, reaction, watchalong, timecode) => {
+const description = (anime, episode, season, reaction, timecode) => {
     const captial = anime.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
     const noSpace = anime.replace(/\s/g, '');
     let seasonal = " Season" + season;
-    let watchalonger = "<br>" + "<br>" + captial + " Watchalong FULL EPISODE Playlist ♥ " + watchalong;
 
     if (season === "" || season === 0) {
         seasonal = "";
-    }
-
-    if (watchalong === "") {
-        watchalonger = "";
     }
 
     console.log(timecode);
@@ -44,7 +39,6 @@ const description = (anime, episode, season, reaction, watchalong, timecode) => 
         "⬇️ TIMECODES ⬇️" +
         "<br>" + "<br>" + captial + " Reaction Episode " + episode + seasonal +
         "<br>" + "<br>" + captial + " Reactions / Impressions Playlist ♥ " + reaction +
-        watchalonger +
         "<br>" + "<br>" + "#" + noSpace + "reaction " + "#" + noSpace + "ep" + episode + " " +
         "#MoreSamsonReactions" +
         "<br>" + "<br>" +  "♥ FOLLOW ME ♥ " +
@@ -61,7 +55,6 @@ const description = (anime, episode, season, reaction, watchalong, timecode) => 
 youtubeTag = () => {
     const anime = document.getElementById("anime").value.toLowerCase();
     const reaction = document.getElementById("reaction").value.toLowerCase();
-    const watchalong = document.getElementById("watchalong").value.toLowerCase();
     const episode = document.getElementById("episode").value;
     const season = document.getElementById("season").value;
     const timecode = document.getElementById("timecode").value;
@@ -70,7 +63,7 @@ youtubeTag = () => {
 
     const YTReact = reactionTags(anime, episode);
     const YTSeason = seasonTags(anime, season);
-    const YTDesc = description(anime, episode, season, reaction, watchalong, timecode);
+    const YTDesc = description(anime, episode, season, reaction, timecode);
 
     displayTags.addEventListener('click', async event => {
         if (!navigator.clipboard) {
