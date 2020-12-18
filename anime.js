@@ -1,26 +1,19 @@
 
 const reactionTags = (anime, episode) => {
     return (
+        "samson, " +
         anime + " reaction, " +
-        anime + " ep " + episode + ", " +
-        anime + " ep " + episode + " reaction, " +
         anime + " episode " + episode + ", " +
-        anime + " reaction " + episode + ", " +
-        "reaction " + anime + ", " +
-        "reaction " + anime + " ep " + episode + ", " +
-        "reaction " + anime + " episode " + episode + ", " +
-        "reaction " + anime + " " + episode + ", " +
+        anime + " episode " + episode + " reaction, " +
+        anime + " reaction episode " + episode + ", " +
         anime + " " + episode + ", " +
-        "anime, " + "anime reaction, " + "reaction anime, " + "weeb, " + "weeb reaction, "
+        "anime reaction, samson l, samson loftin, samsonloftin"
     )
 }
 
 const seasonTags = (anime, season) => {
     return (
-        anime + " " + season + ", " +
-        anime + " season " + season + ", " +
-        anime + " s " + season + ", " +
-        anime + " s" + season + ", "
+        anime + " season " + season + ", "
     )
 }
 
@@ -37,7 +30,7 @@ const description = (anime, episode, season, reaction, timecode) => {
 
     return (
         "⬇️ TIMECODES ⬇️" +
-        "<br>" + "<br>" + captial + " Reaction Episode " + episode + seasonal +
+        "<br>" + captial + " Reaction Episode " + episode + seasonal +
         "<br>" + "<br>" + captial + " Reactions / Impressions Playlist ♥ " + reaction +
         "<br>" + "<br>" + "#" + noSpace + "reaction " + "#" + noSpace + "ep" + episode + " " +
         "#MoreSamsonReactions" +
@@ -46,7 +39,7 @@ const description = (anime, episode, season, reaction, timecode) => {
         "<br>" + "Anime Review / Discussions ♥ http://YOUTUBE.saml.me" +
         "<br>" + "Twitter:  https://TWITTER.saml.me" +
         "<br>" + "Instagram:  https://INSTAGRAM.saml.me" +
-        "<br>" + "TikTok: https://TikTok.saml.me" +
+        "<br>" + "Twitch: https://TWITCH.saml.me" +
         "<br>" + "<br>" + "♥ TIMECODES ♥" +
         "<br>" + timecode
     )
