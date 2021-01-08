@@ -31,7 +31,7 @@ const description = (anime, episode, season, reaction, timecode) => {
 
     return (
         "⬇️ TIMECODES ⬇️" +
-        "<br>" + captial + " Reaction Episode " + episode + seasonal +
+        "<br>" + captial + " Reaction Episode " + episode + seasonal + " - " +
         "<br>" + "<br>" + captial + " Reactions / Impressions Playlist ♥ " + reaction +
         "<br>" + "<br>" + "#" + noSpace + "reaction " + "#" + noSpace + "ep" + episode + " " +
         "#MoreSamsonReactions" +
