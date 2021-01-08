@@ -1,6 +1,7 @@
 
 const reactionTags = (anime, episode) => {
     return (
+        anime + ", " + anime + " anime, " +
         "samson, " +
         anime + " reaction, " +
         anime + " episode " + episode + ", " +
@@ -20,7 +21,7 @@ const seasonTags = (anime, season) => {
 const description = (anime, episode, season, reaction, timecode) => {
     const captial = anime.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
     const noSpace = anime.replace(/\s/g, '');
-    let seasonal = " Season" + season;
+    let seasonal = " Season " + season;
 
     if (season === "" || season === 0) {
         seasonal = "";
