@@ -8,7 +8,7 @@ const reactionTags = (anime, episode) => {
         anime + " episode " + episode + " reaction, " +
         anime + " reaction episode " + episode + ", " +
         anime + " " + episode + ", " +
-        "anime reaction, samson l, samson loftin, samsonloftin"
+        "anime reaction, samson l, samson loftin, samsonloftin, "
     )
 }
 
