@@ -87,20 +87,7 @@ youtubeTag = () => {
         }
     })
 
-    if (season === "" || season === 0) {
-        return (
             displayTags.innerHTML = YTReact,
             displayDesc.innerHTML = YTDesc
-        )
-    } else {
-        return (
-            displayTags.innerHTML = (
-                reactionTags(anime, episode) +
-                "<br>" + "<br>" +
-                seasonTags(anime, season)
-            ),
 
-            displayDesc.innerHTML = YTDesc
-        )
-    }
 }
