@@ -1,4 +1,3 @@
-
 const reactionTags = (anime, season, episode) => {
     let seasonal = " season " + season,
 
@@ -9,8 +8,8 @@ const reactionTags = (anime, season, episode) => {
     return (
         anime + ", " +
         anime + " reaction, " +
-        anime + seasonal + " episode, " +
-        anime + seasonal + " episode " + " reaction, " +
+        anime + seasonal + " episode " + episode + ", " +
+        anime + seasonal + " episode " + episode + " reaction, " +
         anime + seasonal + ", " +
         anime + seasonal + " reaction, " +
         "samson, samson loftin, samson l, "
@@ -56,9 +55,6 @@ youtubeTag = () => {
     const displayTags = document.getElementById("displayTags");
     const displayDesc = document.getElementById("displayDescription");
 
-    const YTReact = reactionTags(anime, season, episode);
-    const YTDesc = description(anime, episode, season, reaction, timecode);
-
     displayTags.addEventListener('click', async event => {
         if (!navigator.clipboard) {
             // Clipboard API not available
@@ -88,7 +84,7 @@ youtubeTag = () => {
     })
 
     return (
-    displayTags.innerHTML = YTReact,
-        displayDesc.innerHTML = YTDesc
+    displayTags.innerHTML = reactionTags(anime, season, episode),
+        displayDesc.innerHTML = description(anime, episode, season, reaction, timecode)
     )
 }
