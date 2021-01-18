@@ -1,20 +1,19 @@
 
-const reactionTags = (anime, episode) => {
-    return (
-        anime + ", " + anime + " anime, " +
-        "samson, " +
-        anime + " reaction, " +
-        anime + " episode " + episode + ", " +
-        anime + " episode " + episode + " reaction, " +
-        anime + " reaction episode " + episode + ", " +
-        anime + " " + episode + ", " +
-        "anime reaction, samson l, samson loftin, samsonloftin, "
-    )
-}
+const reactionTags = (anime, season, episode) => {
+    let seasonal = " season " + season,
+    
+    if (season === "" || season === 0) {
+        seasonal = "";
+    }
 
-const seasonTags = (anime, season) => {
     return (
-        anime + " season " + season + ", "
+        anime + ", " +
+        anime + " reaction, " +
+        anime + seasonal + " episode, " +
+        anime + seasonal + " episode " + " reaction, " +
+        anime + seasonal + ", " +
+        anime + seasonal + " reaction, " +
+        "samson, samson loftin, samson l, "
     )
 }
 
@@ -22,18 +21,20 @@ const description = (anime, episode, season, reaction, timecode) => {
     const captial = anime.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
     const noSpace = anime.replace(/\s/g, '');
     let seasonal = " Season " + season;
+    let seasonalnos = "season" + season;
 
     if (season === "" || season === 0) {
         seasonal = "";
+        seasonalnos = "";
     }
 
     console.log(timecode);
 
     return (
         "⬇️ TIMECODES ⬇️" +
-        "<br>" + captial + " Reaction Episode " + episode + seasonal + " - " +
-        "<br>" + "<br>" + captial + " Reactions / Impressions Playlist ♥ " + reaction +
-        "<br>" + "<br>" + "#" + noSpace + "reaction " + "#" + noSpace + "ep" + episode + " " +
+        "<br>" + captial + seasonal + " Episode " + episode + " Reaction - " +
+        "<br>" + "<br>" + captial + seasonal + " Reactions Playlist ♥ " + reaction +
+        "<br>" + "<br>" + "#" + noSpace + "reaction " + "#" + noSpace + seasonalnos + "ep" + episode + " " +
         "#MoreSamsonReactions" +
         "<br>" + "<br>" +  "♥ FOLLOW ME ♥ " +
         "<br>" + "Anime Reactions ♥ https://ANIMEREACTIONS.saml.me" +
@@ -55,8 +56,7 @@ youtubeTag = () => {
     const displayTags = document.getElementById("displayTags");
     const displayDesc = document.getElementById("displayDescription");
 
-    const YTReact = reactionTags(anime, episode);
-    const YTSeason = seasonTags(anime, season);
+    const YTReact = reactionTags(anime, season, episode);
     const YTDesc = description(anime, episode, season, reaction, timecode);
 
     displayTags.addEventListener('click', async event => {
