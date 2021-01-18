@@ -31,7 +31,7 @@ const description = (anime, episode, season, reaction, timecode) => {
         "⬇️ TIMECODES ⬇️" +
         "<br>" + captial + seasonal + " Episode " + episode + " Reaction - " +
         "<br>" + "<br>" + captial + seasonal + " Reactions Playlist ♥ " + reaction +
-        "<br>" + "<br>" + "#" + noSpace + "reaction " + "#" + noSpace + seasonalnos + "ep" + episode + " " +
+        "<br>" + "<br>" + "#" + noSpace + "reaction " + "#" + noSpace + seasonalnos + "episode" + episode + " " +
         "#MoreSamsonReactions" +
         "<br>" + "<br>" + "♥ FOLLOW ME ♥ " +
         "<br>" + "Anime Reactions ♥ https://ANIMEREACTIONS.saml.me" +
