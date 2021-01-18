@@ -1,7 +1,7 @@
 
 const reactionTags = (anime, season, episode) => {
     let seasonal = " season " + season,
-    
+
     if (season === "" || season === 0) {
         seasonal = "";
     }
@@ -36,7 +36,7 @@ const description = (anime, episode, season, reaction, timecode) => {
         "<br>" + "<br>" + captial + seasonal + " Reactions Playlist ♥ " + reaction +
         "<br>" + "<br>" + "#" + noSpace + "reaction " + "#" + noSpace + seasonalnos + "ep" + episode + " " +
         "#MoreSamsonReactions" +
-        "<br>" + "<br>" +  "♥ FOLLOW ME ♥ " +
+        "<br>" + "<br>" + "♥ FOLLOW ME ♥ " +
         "<br>" + "Anime Reactions ♥ https://ANIMEREACTIONS.saml.me" +
         "<br>" + "Anime Review / Discussions ♥ http://YOUTUBE.saml.me" +
         "<br>" + "Twitter:  https://TWITTER.saml.me" +
@@ -87,7 +87,8 @@ youtubeTag = () => {
         }
     })
 
-            displayTags.innerHTML = YTReact,
-            displayDesc.innerHTML = YTDesc
-
+    return (
+    displayTags.innerHTML = YTReact,
+        displayDesc.innerHTML = YTDesc
+    )
 }
