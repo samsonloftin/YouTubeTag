@@ -1,17 +1,17 @@
 const reactionTags = (anime, season, episode) => {
-    let seasonal = " season " + season;
+    let seasonal2 = " season " + season;
 
     if (season === "" || season === 0) {
-        seasonal = "";
+        seasonal2 = "";
     }
 
     return (
         anime + ", " +
         anime + " reaction, " +
-        anime + seasonal + " episode " + episode + ", " +
-        anime + seasonal + " episode " + episode + " reaction, " +
-        anime + seasonal + ", " +
-        anime + seasonal + " reaction, " +
+        anime + seasonal2 + " episode " + episode + ", " +
+        anime + seasonal2 + " episode " + episode + " reaction, " +
+        anime + seasonal2 + ", " +
+        anime + seasonal2 + " reaction, " +
         "samson, samson loftin, samson l, "
     )
 }
@@ -26,8 +26,6 @@ const description = (anime, episode, season, reaction, timecode) => {
         seasonal = "";
         seasonalnos = "";
     }
-
-    console.log(timecode);
 
     return (
         "⬇️ TIMECODES ⬇️" +
