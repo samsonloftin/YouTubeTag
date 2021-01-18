@@ -1,5 +1,5 @@
 const reactionTags = (anime, season, episode) => {
-    let seasonal = " season " + season,
+    let seasonal = " season " + season;
 
     if (season === "" || season === 0) {
         seasonal = "";
