@@ -16,7 +16,7 @@ const reactionTags = (anime, season, episode) => {
     )
 }
 
-const description = (anime, episode, season, reaction, timecode) => {
+const description = (anime, title, episode, season, reaction, timecode) => {
     const captial = anime.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
     const noSpace = anime.replace(/\s/g, '');
     let seasonal = " Season " + season;
@@ -29,7 +29,7 @@ const description = (anime, episode, season, reaction, timecode) => {
 
     return (
         "⬇️ TIMECODES ⬇️" +
-        "<br>" + captial + seasonal + " Episode " + episode + " Reaction - " +
+        "<br>" + title + " - " + captial + seasonal + " Episode " + episode + " Reaction" +
         "<br>" + "<br>" + captial + seasonal + " Reactions Playlist ♥ " + reaction +
         "<br>" + "<br>" + "#" + noSpace + "reaction " + "#" + noSpace + seasonalnos + "episode" + episode + " " +
         "#MoreSamsonReactions" +
@@ -46,6 +46,7 @@ const description = (anime, episode, season, reaction, timecode) => {
 
 youtubeTag = () => {
     const anime = document.getElementById("anime").value.toLowerCase();
+    const title = document.getElementById("title").value;
     const reaction = document.getElementById("reaction").value.toLowerCase();
     const episode = document.getElementById("episode").value;
     const season = document.getElementById("season").value;
@@ -83,6 +84,6 @@ youtubeTag = () => {
 
     return (
     displayTags.innerHTML = reactionTags(anime, season, episode),
-        displayDesc.innerHTML = description(anime, episode, season, reaction, timecode)
+        displayDesc.innerHTML = description(anime, title, episode, season, reaction, timecode)
     )
 }
