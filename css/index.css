@@ -55,6 +55,13 @@ input {
     justify-content: space-between;
 }
 
+.threeSection {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+
+
 .formSection {
     width: 45%;
     margin-bottom: 20px;

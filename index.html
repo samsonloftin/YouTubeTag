@@ -23,17 +23,28 @@
                 </div>
 
                 <div class="formSection" id="animeInput">
-                    <label for="title">Title</label>
+                    <label for="altanime">Alt Anime</label>
+                    <input type="text" id="altanime" name="altanime">
+                </div>
+
+
+                <div class="formSection" id="animeInput">
+                    <label for="title">Video Title</label>
                     <input type="text" id="title" name="title">
                 </div>
 
                 <div class="twoColumn">
-                    <div class="formSection">
-                        <label for="episode">Episode #</label>
+                    <div class="threeSection">
+                        <label for="episode">Ep #</label>
                         <input type="number" id="episode" name="episode" min="0">
                     </div>
 
-                    <div class="formSection">
+                    <div class="threeSection">
+                        <label for="altepisode">Alt Ep #</label>
+                        <input type="number" id="altepisode" name="altepisode" min="0">
+                    </div>
+
+                    <div class="threeSection">
                         <label for="season">Season #</label>
                         <input type="number" id="season" name="season" min="0">
                     </div>
@@ -45,7 +56,7 @@
 
 
                 <label for="timecode">Timecodes</label>
-                <textarea cols="50" rows="10" id="timecode" name="timecode"></textarea><br><br>
+                <textarea cols="50" rows="5" id="timecode" name="timecode"></textarea><br><br>
                 <input class="submit" type="button" onclick="youtubeTag()" value="Submit">
             </form>
 

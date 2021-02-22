@@ -1,3 +1,14 @@
+let animetags = (anime, seasonal2, episode) => {
+    return (
+        anime + ", " +
+        anime + " reaction, " +
+        anime + seasonal2 + " episode " + episode + ", " +
+        anime + seasonal2 + " episode " + episode + " reaction, " +
+        anime + seasonal2 + ", " +
+        anime + seasonal2 + " reaction, "
+    )
+}
+
 const reactionTags = (anime, season, episode) => {
     let seasonal2 = " season " + season;
 
@@ -5,15 +16,14 @@ const reactionTags = (anime, season, episode) => {
         seasonal2 = "";
     }
 
-    return (
-        anime + ", " +
-        anime + " reaction, " +
-        anime + seasonal2 + " episode " + episode + ", " +
-        anime + seasonal2 + " episode " + episode + " reaction, " +
-        anime + seasonal2 + ", " +
-        anime + seasonal2 + " reaction, " +
-        "samson, samson loftin, samson l, "
-    )
+    if ((anime === "" || anime === undefined)) {
+        return ("")
+    } else if (episode === 0 || episode === "" || episode === undefined) {
+        return ("")
+    } else {
+        return (animetags(anime, seasonal2, episode))
+    }
+
 }
 
 const description = (anime, title, episode, season, reaction, timecode) => {
@@ -45,9 +55,11 @@ const description = (anime, title, episode, season, reaction, timecode) => {
 
 youtubeTag = () => {
     const anime = document.getElementById("anime").value.toLowerCase();
+    const altanime = document.getElementById("altanime").value.toLowerCase();
     const title = document.getElementById("title").value;
     const reaction = document.getElementById("reaction").value;
     const episode = document.getElementById("episode").value;
+    const altepisode = document.getElementById("altepisode").value;
     const season = document.getElementById("season").value;
     const timecode = document.getElementById("timecode").value;
     const displayTags = document.getElementById("displayTags");
@@ -82,7 +94,7 @@ youtubeTag = () => {
     })
 
     return (
-    displayTags.innerHTML = reactionTags(anime, season, episode),
+        displayTags.innerHTML = (reactionTags(anime, season, episode) + "," + reactionTags(anime, season, altepisode) + "," + reactionTags(altanime, season, episode) + "," + reactionTags(altanime, season, altepisode) + ", samson, samson loftin, samson l, "),
         displayDesc.innerHTML = description(anime, title, episode, season, reaction, timecode)
     )
 }
