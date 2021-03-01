@@ -79,6 +79,11 @@ input {
     margin: 0 10px;
 }
 
+.fullepisode {
+    width: 10px;
+    margin: auto;
+}
+
 .twoColumn {
     display: flex;
     flex-direction: row;

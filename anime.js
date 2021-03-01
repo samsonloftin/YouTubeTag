@@ -26,11 +26,17 @@ const reactionTags = (anime, season, episode) => {
 
 }
 
-const description = (anime, title, episode, season, reaction, timecode) => {
+const description = (anime, title, episode, season, reaction, timecode, fullepisode) => {
     const captial = anime.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
     const noSpace = anime.replace(/\s/g, '');
     let seasonal = " Season " + season;
     let seasonalnos = "season" + season;
+
+    if (fullepisode === "Yes") {
+        fullepisode = " (Full Episode)";
+    } else {
+        fullepisode = "";
+    }
 
     if (season === "" || season === 0) {
         seasonal = "";
@@ -40,7 +46,7 @@ const description = (anime, title, episode, season, reaction, timecode) => {
     return (
         "Timecodes ⬇️" +
         "<br>" + timecode +
-        "<br>" + title + " - " + captial + seasonal + " Episode " + episode + " Reaction" +
+        "<br>" + "<br>" + title + " - " + captial + seasonal + " Episode " + episode + " Reaction" + fullepisode +
         "<br>" + "<br>" + captial + seasonal + " Reactions Playlist ♥ " + reaction +
         "<br>" + "<br>" + "#" + noSpace + "reaction " + "#" + noSpace + seasonalnos + "episode" + episode + " " +
         "#MoreSamsonReactions" +
@@ -64,6 +70,8 @@ youtubeTag = () => {
     const timecode = document.getElementById("timecode").value;
     const displayTags = document.getElementById("displayTags");
     const displayDesc = document.getElementById("displayDescription");
+    const noSeason = "";
+    const fullepisode = document.getElementById("fullepisode").value;
 
     displayTags.addEventListener('click', async event => {
         if (!navigator.clipboard) {
@@ -94,7 +102,8 @@ youtubeTag = () => {
     })
 
     return (
-        displayTags.innerHTML = (reactionTags(anime, season, episode) + "," + reactionTags(anime, season, altepisode) + "," + reactionTags(altanime, season, episode) + "," + reactionTags(altanime, season, altepisode) + ", samson, samson loftin, samson l, "),
-        displayDesc.innerHTML = description(anime, title, episode, season, reaction, timecode)
+        console.log(fullepisode),
+        displayTags.innerHTML = (reactionTags(anime, season, episode) + "," + reactionTags(anime, noSeason, altepisode) + "," + reactionTags(altanime, season, episode) + "," + reactionTags(altanime, noSeason, altepisode) + ", samson, samson loftin, samson l, "),
+        displayDesc.innerHTML = description(anime, title, episode, season, reaction, timecode, fullepisode)
     )
 }
