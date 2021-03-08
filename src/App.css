@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka One', cursive;
+    background-color:#060d13;
+}
+
+a {
+  color: #ff6666;
+}
+
+.container {
+  width: 100%;
+}
+
+.form-container,
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+.form-container {
+  display: flex;
+  background-color: rgb(187, 153, 212);
+  border-radius: 10px; 
+  padding: 20px 20px 0 20px;
+  margin-bottom: 20px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.form-section-three {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  margin-bottom: 20px;
+}
+
+
+.form-three-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/*
+
+HEADER TITLE
+
+*/
+
+.header {
+align-items: center;
+color: #f0f0f5;
+padding: 10px;
+}
+
+.header-title {
+  font-size: 1.5em;
+}
+
+.header-subtitle {
+  margin: 5px 0;
+}
+
+.header-nav {
+  display: flex;
+  margin: 5px 0;
+  height: 25px;
+}
+
+.header-links {
+  margin: 0 10px;
+}
+
+.header-links:hover {
+  border-bottom: 3px solid #ff6666;
+}
+
+/*
+
+INPUT
+
+*/
+
+input,
+textarea,
+.display {
+  border: none;
+  margin: 10px 0;
+  background-color: #f0f0f5;
+  padding: 5px;
+}
+
+.display {
+min-height: 50px;
+}
+
+.submit {
+  border: none;
+  padding: 5px;
+  color: #f0f0f5;
+  background-color:#060d13;
+  width: 100px;
+  height: 35px;
+}
+
+#form-submit {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
