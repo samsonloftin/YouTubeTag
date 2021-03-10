@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/YouTubeTag/static/css/main.c5867501.chunk.css",
+    "main.js": "/YouTubeTag/static/js/main.c1a5060f.chunk.js",
+    "main.js.map": "/YouTubeTag/static/js/main.c1a5060f.chunk.js.map",
+    "runtime-main.js": "/YouTubeTag/static/js/runtime-main.bf8bd5ba.js",
+    "runtime-main.js.map": "/YouTubeTag/static/js/runtime-main.bf8bd5ba.js.map",
+    "static/js/2.e110ec25.chunk.js": "/YouTubeTag/static/js/2.e110ec25.chunk.js",
+    "static/js/2.e110ec25.chunk.js.map": "/YouTubeTag/static/js/2.e110ec25.chunk.js.map",
+    "index.html": "/YouTubeTag/index.html",
+    "static/css/main.c5867501.chunk.css.map": "/YouTubeTag/static/css/main.c5867501.chunk.css.map",
+    "static/js/2.e110ec25.chunk.js.LICENSE.txt": "/YouTubeTag/static/js/2.e110ec25.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bf8bd5ba.js",
+    "static/js/2.e110ec25.chunk.js",
+    "static/css/main.c5867501.chunk.css",
+    "static/js/main.c1a5060f.chunk.js"
+  ]
+}
