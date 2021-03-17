@@ -153,6 +153,7 @@ class App extends Component {
     let playlist = document.getElementById("playlist").value;
     let displayTags = document.getElementById("displayTags");
     let displayDesc = document.getElementById("displayDescription");
+    let results = document.getElementById("results");
     let noSeason = "";
 
     displayTags.addEventListener('click', async event => {
@@ -182,6 +183,8 @@ class App extends Component {
         console.error('Failed to copy!', err)
       }
     })
+
+    results.style.display = "flex";
 
     return (
       displayTags.innerHTML = (this.reactionTags(title, season, episode, this.state.episodeLabel, this.state.seasonLabel) + ", " +
@@ -264,7 +267,7 @@ class App extends Component {
           </div>
         </div>
 
-        <div className="form-container">
+        <div className="form-container" id="results">
           {/* DESCRIPTION TITLE */}
           <div className="form-section">
             <label>Description (Click Below to Copy)</label>

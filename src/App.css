@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Fredoka One', cursive;
-    background-color:#060d13;
+    background-color:#192836;
 }
 
 a {
@@ -27,7 +27,7 @@ a {
 
 .form-container {
   display: flex;
-  background-color: rgb(187, 153, 212);
+  background-color: #6a7b8b;
   border-radius: 10px; 
   padding: 20px 20px 0 20px;
   margin-bottom: 20px;
@@ -121,4 +121,9 @@ min-height: 50px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+}
+
+
+#results {
+  display: none;
 }
