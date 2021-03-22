@@ -64,21 +64,26 @@ class App extends Component {
     }
   }
 
-  titlesTags = (title, sLabelNew, epLabelNew, episode) => {
+  titlesTags = (title, sLabelNew, epLabelNew, episode, mediaType) => {
     return (
       title + ", " +
-      title + " reaction, " +
-      title + sLabelNew + epLabelNew + ", " +
-      title + sLabelNew + epLabelNew + " reaction, " +
-      title + sLabelNew + " " + episode + " reaction, " +
-      title + sLabelNew + ", " +
-      title + sLabelNew + " reaction, "
+      title + " " + mediaType + " reaction, " +
+      title + sLabelNew + " reaction, " +
+      title + sLabelNew + epLabelNew + " reaction, "
     )
   }
 
-  reactionTags = (title, season, episode, epLabel, sLabel) => {
+  reactionTags = (title, season, episode, epLabel, sLabel, mediaType, altEpisode, altTitle, displayTagsOverflow, overflowTags) => {
     let sLabelNew = "";
     let epLabelNew = "";
+    let altEpLabelNew = "";
+    let tag01 = "";
+    let tag03 = "";
+    let tag02 = "";
+    let tag04 = "";
+    let tags = "";
+    let newTags = "";
+    let newTags2 = "";
 
     if (season === 0 || season === undefined || season === "0") {
       sLabelNew = "";
@@ -87,25 +92,83 @@ class App extends Component {
     }
 
     if (episode === 0 || episode === undefined || episode === "0") {
-      return ("");
+      epLabelNew = "";
     } else if (episode >= 1) {
       epLabelNew = " " + epLabel.toLowerCase() + " " + episode;
     }
 
+    if (altEpisode === 0 || altEpisode === undefined || altEpisode === "0") {
+      altEpLabelNew = "";
+    } else if (altEpisode >= 1) {
+      altEpLabelNew = " " + epLabel.toLowerCase() + " " + altEpisode;
+    }
 
     if (title === "" || title === undefined) {
-      return ("")
+      return ("Title Needed")
     } else {
-      epLabelNew = " " + epLabel.toLowerCase() + " " + episode;
-      return (this.titlesTags(title, sLabelNew, epLabelNew, episode))
+      tag01 = this.titlesTags(title, sLabelNew, epLabelNew, episode, mediaType.toLowerCase());
+      tag02 = this.titlesTags(title, "", altEpLabelNew, altEpisode, mediaType.toLowerCase());
+      tags += tag01 + tag02;
+      newTags2 = tag01 + tag02;
     }
+
+    if (altTitle === "" || altTitle === undefined || altTitle === 0) {
+      tag03 = "";
+      tag04 = "";
+    } else {
+      tag03 = this.titlesTags(altTitle.toLowerCase(), sLabelNew, epLabelNew, episode, mediaType.toLowerCase());
+      tag04 = this.titlesTags(altTitle.toLowerCase(), "", altEpLabelNew, altEpisode, mediaType.toLowerCase());
+      tags += tag03 + tag04;
+      newTags = newTags2 + tag03;
+    }
+
+    if (tags.length <= 500) {
+      return (tags);
+    } else if (newTags.length <= 500) {
+      return (
+        newTags +
+        (overflowTags.style.display = "flex") +
+        (displayTagsOverflow.innerHTML = tag04)
+        );
+    } else if (newTags2.length <= 500) {
+      return (
+        newTags2 +
+        (overflowTags.style.display = "flex") +
+        (displayTagsOverflow.innerHTML = tag03 + tag04)
+        );
+    } else {
+      return ("Anime title is too long, cannot create tags under 500 characters")
+    }
+
   }
 
-  description = (title, youtubeTitle, episode, youtubeTimecode, season, playlist, epLabel, sLabel) => {
+  videoTitle = (title, youtubeTitle, episode, season, epLabel, sLabel) => {
     const captialTitle = title.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+    let sLabelNew = "";
+    let epLabelNew = "";
+
+    if (season === 0 || season === undefined || season === "0") {
+      sLabelNew = "";
+    } else if (season >= 1) {
+      sLabelNew = " " + sLabel + " " + season;
+    }
+
+    if (episode === 0 || episode === undefined || episode === "0") {
+      return ("");
+    } else if (episode >= 1) {
+      epLabelNew = " " + epLabel + " " + episode;
+    }
+
+    return (youtubeTitle + " - " + captialTitle + sLabelNew + epLabelNew + " Reaction")
+  }
+
+  description = (title, youtubeTitle, episode, youtubeTimecode, season, playlist, epLabel, sLabel, altEpisode, mediaType, altTitle) => {
+    const captialTitle = title.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+    const altCaptialTitle = altTitle.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
     const noSpaceTitle = title.replace(/\s/g, '');
     let sLabelNew = "";
     let epLabelNew = "";
+    let altEpLabelNew = "";
     let youtubeTimecodeNew = "";
 
     if (season === 0 || season === undefined || season === "0") {
@@ -120,15 +183,24 @@ class App extends Component {
       epLabelNew = " " + epLabel + " " + episode;
     }
 
+    if (altEpisode === 0 || altEpisode === undefined || altEpisode === "0") {
+      altEpLabelNew = "";
+    } else if (altEpisode >= 1) {
+      altEpLabelNew = youtubeTitle + " - " + captialTitle + " " + epLabel.toLowerCase() + " " + altEpisode + " Reaction";
+    }
+
     if (youtubeTimecode === undefined || youtubeTimecode === "") {
       youtubeTimecodeNew = "";
     } else { // eslint-disable-next-line
       youtubeTimecodeNew = "<br>" + "<br>" + "Timecodes ⬇️" + "<br>" // eslint-disable-next-line
     }
 
+
     return (
-      youtubeTitle + " - " + captialTitle + sLabelNew + " " + epLabelNew + " Reaction" + // eslint-disable-next-line
-      "<br>" + "<br>" + captialTitle + sLabelNew + " Reactions Playlist - " + playlist + // eslint-disable-next-line
+      youtubeTitle + " - " + captialTitle + sLabelNew + epLabelNew + " Reaction" + // eslint-disable-next-line
+      altEpLabelNew + // eslint-disable-next-line
+      youtubeTitle + " - " + altCaptialTitle + epLabelNew + " Reaction" + // eslint-disable-next-line
+      "<br>" + "<br>" + captialTitle + sLabelNew + mediaType +" Reactions Playlist - " + playlist + // eslint-disable-next-line
       "<br>" + "<br>" + "#" + noSpaceTitle + "reaction " + "#" + noSpaceTitle + sLabelNew.replace(/\s/g, '') + epLabelNew.replace(/\s/g, '') + " " + // eslint-disable-next-line
       this.state.youTubeHashtag + // eslint-disable-next-line
       "<br>" + "<br>" + this.state.youTubeFollow + ":" + // eslint-disable-next-line
@@ -152,9 +224,11 @@ class App extends Component {
     let season = document.getElementById("season").value;
     let playlist = document.getElementById("playlist").value;
     let displayTags = document.getElementById("displayTags");
+    let displayTagsOverflow = document.getElementById("displayTagsOverflow");
     let displayDesc = document.getElementById("displayDescription");
+    let displayTitle = document.getElementById("displayTitle");
     let results = document.getElementById("results");
-    let noSeason = "";
+    let overflowTags = document.getElementById("overflowTags");
 
     displayTags.addEventListener('click', async event => {
       if (!navigator.clipboard) {
@@ -184,14 +258,27 @@ class App extends Component {
       }
     })
 
+    displayTitle.addEventListener('click', async event => {
+      if (!navigator.clipboard) {
+        // Clipboard API not available
+        return
+      }
+      const text = event.target.innerText
+      try {
+        await navigator.clipboard.writeText(text)
+        event.target.textContent = 'Copied to clipboard'
+      } catch (err) {
+        console.error('Failed to copy!', err)
+      }
+    })
+
     results.style.display = "flex";
+    overflowTags.style.display = "none";
 
     return (
-      displayTags.innerHTML = (this.reactionTags(title, season, episode, this.state.episodeLabel, this.state.seasonLabel) + ", " +
-        this.reactionTags(title, noSeason, altEpisode, this.state.episodeLabel, this.state.seasonLabel) + ", " +
-        this.reactionTags(altTitle, season, episode, this.state.episodeLabel, this.state.seasonLabel) + ", " +
-        this.reactionTags(altTitle, noSeason, altEpisode, this.state.episodeLabel, this.state.seasonLabel)),
-      displayDesc.innerHTML = this.description(title, youtubeTitle, episode, youtubeTimecode, season, playlist, this.state.episodeLabel, this.state.seasonLabel)
+      displayTags.innerHTML = this.reactionTags(title, season, episode, this.state.episodeLabel, this.state.seasonLabel, this.state.mediaTitle, altEpisode, altTitle, displayTagsOverflow, overflowTags),
+      displayTitle.innerHTML = this.videoTitle(title, youtubeTitle, episode, season, this.state.episodeLabel, this.state.seasonLabel),
+      displayDesc.innerHTML = this.description(title, youtubeTitle, episode, youtubeTimecode, season, playlist, this.state.episodeLabel, this.state.seasonLabel, this.state.mediaTitle, altEpisode, altTitle)
     )
   }
 
@@ -268,16 +355,29 @@ class App extends Component {
         </div>
 
         <div className="form-container" id="results">
+          {/* TITLE */}
+          <div className="form-section">
+            <label>Video Title - Click below to Copy</label>
+            <div className="display" id="displayTitle" />
+          </div>
+
           {/* DESCRIPTION TITLE */}
           <div className="form-section">
-            <label>Description (Click Below to Copy)</label>
+            <label>Description - Click below to Copy</label>
             <div className="display" id="displayDescription" />
           </div>
 
           {/* TAGS TITLE */}
           <div className="form-section">
-            <label>Tags (Click Below to Copy)</label>
+            <label>Tags - Click below to Copy</label>
             <div className="display" id="displayTags" />
+          </div>
+
+          {/* TAGS OVERFLOW */}
+          <div className="form-section" id="overflowTags">
+            <label>Tags Overflow</label>
+            <label>For tags that don't fit within YouTube's 500 character limit</label>
+            <div className="display" id="displayTagsOverflow" />
           </div>
         </div>
 
