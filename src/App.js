@@ -129,13 +129,13 @@ class App extends Component {
         newTags +
         (overflowTags.style.display = "flex") +
         (displayTagsOverflow.innerHTML = tag04)
-        );
+      );
     } else if (newTags2.length <= 500) {
       return (
         newTags2 +
         (overflowTags.style.display = "flex") +
         (displayTagsOverflow.innerHTML = tag03 + tag04)
-        );
+      );
     } else {
       return ("Anime title is too long, cannot create tags under 500 characters")
     }
@@ -200,7 +200,7 @@ class App extends Component {
       youtubeTitle + " - " + captialTitle + sLabelNew + epLabelNew + " Reaction" + // eslint-disable-next-line
       altEpLabelNew + // eslint-disable-next-line
       youtubeTitle + " - " + altCaptialTitle + epLabelNew + " Reaction" + // eslint-disable-next-line
-      "<br>" + "<br>" + captialTitle + sLabelNew + mediaType +" Reactions Playlist - " + playlist + // eslint-disable-next-line
+      "<br>" + "<br>" + captialTitle + sLabelNew + mediaType + " Reactions Playlist - " + playlist + // eslint-disable-next-line
       "<br>" + "<br>" + "#" + noSpaceTitle + "reaction " + "#" + noSpaceTitle + sLabelNew.replace(/\s/g, '') + epLabelNew.replace(/\s/g, '') + " " + // eslint-disable-next-line
       this.state.youTubeHashtag + // eslint-disable-next-line
       "<br>" + "<br>" + this.state.youTubeFollow + ":" + // eslint-disable-next-line
