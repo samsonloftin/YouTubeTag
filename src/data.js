@@ -2,7 +2,7 @@ export const Data = {
     youTube: {
         id: "Post-TimeSkip Sam",
         hashtag: "#MoreSamsonReactions",
-        followTitle: "Follow",
+        followTitle: "Keep Update To Date",
     },
     youTubeSocial: [
         {

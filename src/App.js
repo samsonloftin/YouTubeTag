@@ -66,14 +66,16 @@ class App extends Component {
 
   titlesTags = (title, sLabelNew, epLabelNew, episode, mediaType) => {
     return (
-      title + ", " +
-      title + " " + mediaType + " reaction, " +
-      title + sLabelNew + " reaction, " +
-      title + sLabelNew + epLabelNew + " reaction, "
+      [
+        title + "," +
+        title + " " + mediaType + " reaction," +
+        title + sLabelNew + " reaction," +
+        title + sLabelNew + epLabelNew + " reaction,"
+      ]
     )
   }
 
-  reactionTags = (title, season, episode, epLabel, sLabel, mediaType, altEpisode, altTitle, displayTagsOverflow, overflowTags) => {
+  reactionTags = (title, season, episode, epLabel, sLabel, mediaType, altEpisode, altTitle, displayTagsOverflow, overflowTags, displayTags) => {
     let sLabelNew = "";
     let epLabelNew = "";
     let altEpLabelNew = "";
@@ -81,9 +83,11 @@ class App extends Component {
     let tag03 = "";
     let tag02 = "";
     let tag04 = "";
-    let tags = "";
-    let newTags = "";
-    let newTags2 = "";
+    let tagSum = "";
+    let tagArray = [];
+    let findDupes = [];
+    let overflowTagArray = [];
+    let index = 0;
 
     if (season === 0 || season === undefined || season === "0") {
       sLabelNew = "";
@@ -108,8 +112,6 @@ class App extends Component {
     } else {
       tag01 = this.titlesTags(title, sLabelNew, epLabelNew, episode, mediaType.toLowerCase());
       tag02 = this.titlesTags(title, "", altEpLabelNew, altEpisode, mediaType.toLowerCase());
-      tags += tag01 + tag02;
-      newTags2 = tag01 + tag02;
     }
 
     if (altTitle === "" || altTitle === undefined || altTitle === 0) {
@@ -118,28 +120,31 @@ class App extends Component {
     } else {
       tag03 = this.titlesTags(altTitle.toLowerCase(), sLabelNew, epLabelNew, episode, mediaType.toLowerCase());
       tag04 = this.titlesTags(altTitle.toLowerCase(), "", altEpLabelNew, altEpisode, mediaType.toLowerCase());
-      tags += tag03 + tag04;
-      newTags = newTags2 + tag03;
     }
 
-    if (tags.length <= 500) {
-      return (tags);
-    } else if (newTags.length <= 500) {
+    tagSum = tag01 + tag02 + tag03 + tag04;
+
+    tagArray = tagSum.split(",");
+    findDupes = [...new Set(tagArray)];
+
+    index = findDupes.toString().length
+
+
+    while (index >= 500) {
+      overflowTagArray.push(findDupes.splice(-1));
+      index -= (overflowTagArray.toString().length);
+    }
+
+
+    if (overflowTagArray.toString().length >= 1 ) {
       return (
-        newTags +
+        (displayTags.innerHTML = findDupes.toString()) +
         (overflowTags.style.display = "flex") +
-        (displayTagsOverflow.innerHTML = tag04)
-      );
-    } else if (newTags2.length <= 500) {
-      return (
-        newTags2 +
-        (overflowTags.style.display = "flex") +
-        (displayTagsOverflow.innerHTML = tag03 + tag04)
-      );
+        (displayTagsOverflow.innerHTML = overflowTagArray.toString())
+      )
     } else {
-      return ("Anime title is too long, cannot create tags under 500 characters")
+      return (displayTags.innerHTML = findDupes.toString())
     }
-
   }
 
   videoTitle = (title, youtubeTitle, episode, season, epLabel, sLabel) => {
@@ -162,9 +167,9 @@ class App extends Component {
     return (youtubeTitle + " - " + captialTitle + sLabelNew + epLabelNew + " Reaction")
   }
 
-  description = (title, youtubeTitle, episode, youtubeTimecode, season, playlist, epLabel, sLabel, altEpisode, mediaType, altTitle) => {
+
+  description = (title, youtubeTitle, episode, youtubeTimecode, season, playlist, epLabel, sLabel, mediaType, altEpisode) => {
     const captialTitle = title.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
-    const altCaptialTitle = altTitle.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
     const noSpaceTitle = title.replace(/\s/g, '');
     let sLabelNew = "";
     let epLabelNew = "";
@@ -198,9 +203,7 @@ class App extends Component {
 
     return (
       youtubeTitle + " - " + captialTitle + sLabelNew + epLabelNew + " Reaction" + // eslint-disable-next-line
-      altEpLabelNew + // eslint-disable-next-line
-      youtubeTitle + " - " + altCaptialTitle + epLabelNew + " Reaction" + // eslint-disable-next-line
-      "<br>" + "<br>" + captialTitle + sLabelNew + mediaType + " Reactions Playlist - " + playlist + // eslint-disable-next-line
+      "<br>" + "<br>" + captialTitle + sLabelNew + " " + mediaType + " Reactions Playlist - " + playlist + // eslint-disable-next-line
       "<br>" + "<br>" + "#" + noSpaceTitle + "reaction " + "#" + noSpaceTitle + sLabelNew.replace(/\s/g, '') + epLabelNew.replace(/\s/g, '') + " " + // eslint-disable-next-line
       this.state.youTubeHashtag + // eslint-disable-next-line
       "<br>" + "<br>" + this.state.youTubeFollow + ":" + // eslint-disable-next-line
@@ -276,9 +279,9 @@ class App extends Component {
     overflowTags.style.display = "none";
 
     return (
-      displayTags.innerHTML = this.reactionTags(title, season, episode, this.state.episodeLabel, this.state.seasonLabel, this.state.mediaTitle, altEpisode, altTitle, displayTagsOverflow, overflowTags),
+      this.reactionTags(title, season, episode, this.state.episodeLabel, this.state.seasonLabel, this.state.mediaTitle, altEpisode, altTitle, displayTagsOverflow, overflowTags, displayTags),
       displayTitle.innerHTML = this.videoTitle(title, youtubeTitle, episode, season, this.state.episodeLabel, this.state.seasonLabel),
-      displayDesc.innerHTML = this.description(title, youtubeTitle, episode, youtubeTimecode, season, playlist, this.state.episodeLabel, this.state.seasonLabel, this.state.mediaTitle, altEpisode, altTitle)
+      displayDesc.innerHTML = this.description(title, youtubeTitle, episode, youtubeTimecode, season, playlist, this.state.episodeLabel, this.state.seasonLabel, this.state.mediaTitle, altEpisode)
     )
   }
 
