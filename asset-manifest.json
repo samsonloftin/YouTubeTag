@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/YouTubeTag/static/css/main.7b7b2003.chunk.css",
-    "main.js": "/YouTubeTag/static/js/main.17bcd6d8.chunk.js",
-    "main.js.map": "/YouTubeTag/static/js/main.17bcd6d8.chunk.js.map",
+    "main.js": "/YouTubeTag/static/js/main.35afc3f2.chunk.js",
+    "main.js.map": "/YouTubeTag/static/js/main.35afc3f2.chunk.js.map",
     "runtime-main.js": "/YouTubeTag/static/js/runtime-main.bf8bd5ba.js",
     "runtime-main.js.map": "/YouTubeTag/static/js/runtime-main.bf8bd5ba.js.map",
-    "static/js/2.5d667277.chunk.js": "/YouTubeTag/static/js/2.5d667277.chunk.js",
-    "static/js/2.5d667277.chunk.js.map": "/YouTubeTag/static/js/2.5d667277.chunk.js.map",
+    "static/js/2.8f63a114.chunk.js": "/YouTubeTag/static/js/2.8f63a114.chunk.js",
+    "static/js/2.8f63a114.chunk.js.map": "/YouTubeTag/static/js/2.8f63a114.chunk.js.map",
     "index.html": "/YouTubeTag/index.html",
     "static/css/main.7b7b2003.chunk.css.map": "/YouTubeTag/static/css/main.7b7b2003.chunk.css.map",
-    "static/js/2.5d667277.chunk.js.LICENSE.txt": "/YouTubeTag/static/js/2.5d667277.chunk.js.LICENSE.txt"
+    "static/js/2.8f63a114.chunk.js.LICENSE.txt": "/YouTubeTag/static/js/2.8f63a114.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.bf8bd5ba.js",
-    "static/js/2.5d667277.chunk.js",
+    "static/js/2.8f63a114.chunk.js",
     "static/css/main.7b7b2003.chunk.css",
-    "static/js/main.17bcd6d8.chunk.js"
+    "static/js/main.35afc3f2.chunk.js"
   ]
 }
